@@ -1,0 +1,128 @@
+Golang
+------
+
+Day-1
+-----
+
+Gorouting-run parallel task
+channel-response fron routing
+
+loops->for loop
+
+Questions solved
+----------------
+package main
+
+import "fmt"
+
+func main() {
+	leftTriangle()
+	rightTriangle()
+	rightTriangleNumbers()
+	hallowPattern()
+	pyramid()
+	basicCalculator()
+}
+
+func pyramid() {
+	rows := 5
+
+	for i := 1; i <= rows; i++ {
+
+		for space := 1; space <= rows-i; space++ {
+			fmt.Print(" ")
+		}
+		for j := 1; j <= 2*i-1; j++ {
+			fmt.Print("*")
+		}
+		fmt.Println()
+	}
+}
+
+func leftTriangle() {
+	for i := 0; i <= 4; i++ {
+		for j := 0; j <= i; j++ {
+			fmt.Print("* ")
+		}
+		fmt.Println()
+	}
+}
+
+func rightTriangle() {
+	for i := 1; i <= 5; i++ {
+		for j := 1; j <= 5-i; j++ {
+			fmt.Print(" ")
+		}
+		for k := 1; k <= i; k++ {
+			fmt.Print("*")
+		}
+		fmt.Println()
+	}
+}
+
+func rightTriangleNumbers() {
+	for i := 1; i <= 5; i++ {
+		m := 5 - i + 1
+		for j := 1; j <= 5-i; j++ {
+			fmt.Print(" ")
+		}
+		for k := 1; k <= i; k++ {
+			fmt.Print(m)
+			m++
+		}
+		fmt.Println()
+	}
+}
+func hallowPattern() {
+	rows := 5
+	cols := 5
+
+	for i := 1; i <= rows; i++ {
+		for j := 1; j <= cols; j++ {
+			if i == 1 || i == rows || j == 1 || j == cols {
+				fmt.Print(j)
+				fmt.Print(" ")
+			} else {
+				fmt.Print("  ")
+			}
+
+		}
+		fmt.Println()
+	}
+}
+
+func basicCalculator() {
+	var num1, num2 float64
+	var operator string
+
+	fmt.Print("Enter operator (+, -, *, /): ")
+	fmt.Scan(&operator)
+
+	fmt.Print("Enter first number: ")
+	fmt.Scan(&num1)
+
+	fmt.Print("Enter second number: ")
+	fmt.Scan(&num2)
+
+	result := 0.0
+	switch operator {
+	case "+":
+		result = num1 + num2
+	case "-":
+		result = num1 - num2
+	case "*":
+		result = num1 * num2
+	case "/":
+		if num2 != 0 {
+			result = num1 / num2
+		} else {
+			fmt.Println("Error: Division by zero")
+			return
+		}
+	default:
+		fmt.Println("Error: Invalid operator")
+		return
+	}
+
+	fmt.Printf("%.2f %s %.2f = %.2f\n", num1, operator, num2, result)
+}
